@@ -11,7 +11,7 @@ import SignInScreen from "./containers/SignInScreen";
 import SignUpScreen from "./containers/SignUpScreen";
 import SettingsScreen from "./containers/SettingsScreen";
 import SplashScreen from "./containers/SplashScreen";
-
+import RoomScreen from "./containers/RoomScreen";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -96,6 +96,16 @@ export default function App() {
                         {() => <HomeScreen />}
                       </Stack.Screen>
 
+                      <Stack.Screen
+                        name="Room"
+                        options={{
+                          title: "Room",
+                          headerStyle: { backgroundColor: "red" },
+                          headerTitleStyle: { color: "white" },
+                        }}
+                      >
+                        {() => <RoomScreen />}
+                      </Stack.Screen>
                       <Stack.Screen
                         name="Profile"
                         options={{
