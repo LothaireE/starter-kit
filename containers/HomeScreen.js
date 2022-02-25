@@ -40,7 +40,7 @@ export default function HomeScreen() {
       setIsLoading(false);
     };
     fetchData();
-    console.log("data ====>", data);
+    // console.log("data ====>", data);
   }, []);
 
   return isLoading ? (
@@ -90,7 +90,7 @@ export default function HomeScreen() {
                         <View style={styles.ratings}>
                           <Rating rating={item.ratingValue} />
                           {/* <Text>{item.ratingValue}</Text> */}
-                          <Text>{item.reviews}</Text>
+                          <Text>{item.reviews} reviews</Text>
                         </View>
                       </View>
                       <View style={styles.bottomRight}>
@@ -222,3 +222,27 @@ const styles = StyleSheet.create({
   }}
 />; */
 }
+//             source={{
+//                 uri: data.photos[0].url,
+//               }}
+//               style={styles.topCardPic}
+//               resizeMode="cover"
+//             >
+//               <View style={styles.topCardPrice}>
+//                 <Text style={styles.priceNum}>{data.price} €</Text>
+//               </View>
+//             </ImageBackground>
+
+// <SwiperFlatList
+// autoplay
+// autoplayDelay={2}
+// autoplayLoop
+// index={2}
+// showPagination
+// data={colors}
+// renderItem={({ item }) => (
+//   <View style={[styles.child, { backgroundColor: item }]}>
+//     <Text style={styles.text}>{item}</Text>
+//   </View>
+// )}
+// />

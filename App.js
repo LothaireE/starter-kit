@@ -3,8 +3,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  Ionicons,
+  MaterialCommunityIcons,
+  AntDesign,
+} from "@expo/vector-icons";
+import Image from "react-native";
+// import { MaterialCommunityIcons } from "@expo/vector-icons";
 import HomeScreen from "./containers/HomeScreen";
 import ProfileScreen from "./containers/ProfileScreen";
 import SignInScreen from "./containers/SignInScreen";
@@ -12,6 +17,7 @@ import SignUpScreen from "./containers/SignUpScreen";
 import SettingsScreen from "./containers/SettingsScreen";
 import SplashScreen from "./containers/SplashScreen";
 import RoomScreen from "./containers/RoomScreen";
+import AroundMeScreen from "./containers/AroundMeScreen";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -88,8 +94,8 @@ export default function App() {
                       <Stack.Screen
                         name="Home"
                         options={{
-                          title: "logo",
-                          headerStyle: { backgroundColor: "red" },
+                          title: "home",
+                          headerStyle: { backgroundColor: "#FFFFFF" },
                           headerTitleStyle: { color: "white" },
                         }}
                       >
@@ -98,10 +104,19 @@ export default function App() {
 
                       <Stack.Screen
                         name="Room"
+                        // component={RoomScreen}
                         options={{
                           title: "Room",
-                          headerStyle: { backgroundColor: "red" },
+                          headerStyle: { backgroundColor: "#FFFFFF" },
                           headerTitleStyle: { color: "white" },
+
+                          //  tentative d'encrage du logo :
+                          // headerTitle: () => (
+                          //   <Image
+                          //     source={require("./assets/images/Airbnb-logo.png")}
+                          //     style={{ width: 30, height: 30 }}
+                          //   />
+                          // ),
                         }}
                       >
                         {() => <RoomScreen />}
@@ -117,29 +132,40 @@ export default function App() {
                     </Stack.Navigator>
                   )}
                 </Tab.Screen>
-                {/* <Tab.Screen
+
+                <Tab.Screen
                   name="TabAroundMe"
                   options={{
-                    tabBarLabel: "Around me",
-                    tabBarIcons: ({ color, size }) => (
-                      <MaterialCommunityIcons
-                        name="map-marker-outline"
-                        size={24}
-                        color="black"
-                      />
-                    ),
-                  }}
-                /> */}
-                <Tab.Screen
-                  name="TabSettings"
-                  options={{
-                    tabBarLabel: "Settings",
+                    tabBarLabel: "Around Me",
                     tabBarIcon: ({ color, size }) => (
                       <MaterialCommunityIcons
                         name="map-marker-outline"
                         size={24}
-                        color="black"
+                        color="#747474"
                       />
+                    ),
+                  }}
+                >
+                  {() => (
+                    <Stack.Navigator>
+                      <Stack.Screen
+                        name="AroundMe"
+                        options={{
+                          title: "Around Me",
+                        }}
+                      >
+                        {() => <AroundMeScreen />}
+                      </Stack.Screen>
+                    </Stack.Navigator>
+                  )}
+                </Tab.Screen>
+
+                <Tab.Screen
+                  name="TabSettings"
+                  options={{
+                    tabBarLabel: "My profile",
+                    tabBarIcon: ({ color, size }) => (
+                      <AntDesign name="user" size={24} color="#747474" />
                     ),
                   }}
                 >
